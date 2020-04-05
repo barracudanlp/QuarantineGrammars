@@ -1,0 +1,57 @@
+% start S
+#Adaptado al español de la gramática elaborada por Klein para el libro de NLTK
+#
+# ###################
+# Reglas de la Gramática
+# ###################
+
+# Reescritura de la Raíz
+S -> NP[NUM=?n, PER=?m] VP[NUM=?n, Per=?m]
+
+# Reescritura de NP
+NP[NUM=?n, PER=?m] -> PropN[NUM=?n, PER=?m, GEN=?p] 
+NP[NUM=?n, PER=?m] -> Pron[NUM=?n, PER=?m, GEN=?p]
+NP[NUM=?n, PER=?m, GEN=?g] -> Det[NUM=?n,GEN=?g, PER=?m] N[NUM=?n,GEN=?g]
+NP[NUM=?n, PER=?m, GEN=?g] -> Det[NUM=?n,GEN=?g, PER=?m] N[NUM=?n,GEN=?g] A[Num=?n, GEN=?g]
+
+# Reescritura de VP
+VP[+PRINC, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> FV[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[+PRINC, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> FV[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> FV[+M, +SUBJ, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> FV[+M, +INF, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> FV[+M, +GDIO, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+
+VP[NUM=?n, Per=?p] -> V[NUM=?n, Per=?p] NP[NUM=?j, Per=?q]
+VP[NUM=?n, Per=?p] -> V[NUM=?n, Per=?p] Adv
+
+# Reescritura de FV (Frases verbales formadas po un verbo principal o una perífrasis verbal)
+FV[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+FV[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+FV[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] - 
+
+
+# ###################
+# Léxico
+# ###################
+
+Det[NUM=sg,GEN=masc, PER=3] -> 'este' | 'el' | 'ese'
+Det[NUM=pl,GEN=masc, PER=3] -> 'estos' | 'los' | 'esos'
+Det[NUM=sg,GEN=fem, PER=3] -> 'esta' | 'la' | 'esa'
+Det[NUM=pl,GEN=fem, PER=3] -> 'estas' | 'las' | 'esas'
+
+PropN[NUM=sg, Per=3, GEN=masc]->  'Fede' | 'Fer' | 'Martín' | 'Pablo' | 'Matías' | 'Carlos' | 'José' | 'Rodrigo' | 'Andrés' | 'Federico' | 'Fernando' | 'Santi' | 'Santiago'
+PropN[NUM=sg, Per=3, GEN=fem]-> 'Cata' | 'Catalina' | 'Julia' | 'Maca' | 'Vicky' | |'Rocío' | 'Romina' | 'Romi' | 'Natalia' 
+
+
+Pron[NUM=sg, PER=1, GEN=?p] -> 'yo'
+Pron[NUM=sg, PER=2, GEN=?p] -> 'vos' | 'usted'
+Pron[NUM=sg, PER=3, GEN=masc] -> 'él'
+Pron[NUM=sg, PER=3, GEN=fem] -> 'ella'
+Pron[NUM=pl, PER=1, GEN=?p] -> 'nosotros'
+Pron[NUM=pl, PER=2, GEN=?p] -> 'ustedes'
+Pron[NUM=pl, PER=3, GEN=masc] -> 'ellos'
+Pron[NUM=pl, PER=3, GEN=fem] -> 'ellas'
+
+
+
+

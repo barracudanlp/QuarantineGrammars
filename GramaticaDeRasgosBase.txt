@@ -6,28 +6,28 @@
 # ###################
 
 # Reescritura de la Raíz
-S -> NP[NUM=?n, PER=?m] VP[NUM=?n, Per=?m]
+S[SEM=<?subj(?vp)>] -> NP[NUM=?n, PER=?m, SEM=?subj] VP[+PRINC, NUM=?n, Per=?m, TENSE=?t, SEM=?vp]
 
 # Reescritura de NP
-NP[NUM=?n, PER=?m] -> PropN[NUM=?n, PER=?m, GEN=?p] 
-NP[NUM=?n, PER=?m] -> Pron[NUM=?n, PER=?m, GEN=?p]
-NP[NUM=?n, PER=?m, GEN=?g] -> Det[NUM=?n,GEN=?g, PER=?m] N[NUM=?n,GEN=?g]
-NP[NUM=?n, PER=?m, GEN=?g] -> Det[NUM=?n,GEN=?g, PER=?m] N[NUM=?n,GEN=?g] A[Num=?n, GEN=?g]
+NP[NUM=?n, PER=?m, SEM=?pro] -> PropN[NUM=?n, PER=?m, GEN=?p, SEM=?pro] 
+NP[NUM=?n, PER=?m, SEM=?pro] -> Pron[NUM=?n, PER=?m, GEN=?p, SEM=?pro]
+NP[NUM=?n, PER=?m, GEN=?g, SEM=<?det(?nom)>] -> Det[NUM=?n,GEN=?g, PER=?m, SEM=?det] N[NUM=?n,GEN=?g, SEM=?nom]
+NP[NUM=?n, PER=?m, GEN=?g, SEM=<?det(?nom)>] -> Det[NUM=?n,GEN=?g, PER=?m, SEM=?det] N[NUM=?n,GEN=?g, SEM=?nom] A[Num=?n, GEN=?g]
 
 # Reescritura de VP
 VP[+PRINC, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> FV[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
 VP[+PRINC, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> FV[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
-VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> FV[+M, +SUBJ, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
-VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> FV[+M, +INF, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
-VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> FV[+M, +GDIO, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> V1[+M, +SUBJ, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> V1[+M, +INF, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> V1[+M, +GDIO, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
 
 VP[NUM=?n, Per=?p] -> V[NUM=?n, Per=?p] NP[NUM=?j, Per=?q]
 VP[NUM=?n, Per=?p] -> V[NUM=?n, Per=?p] Adv
 
-# Reescritura de FV (Frases verbales formadas po un verbo principal o una perífrasis verbal)
-FV[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
-FV[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
-FV[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] - 
+# Reescritura de V1 (Frases verbales formadas po un verbo principal o una perífrasis verbal)
+V1[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+V1[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+V1[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] - 
 
 
 # ###################

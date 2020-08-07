@@ -8,6 +8,7 @@
 # Reescritura de la Raíz
 S[SEM=<?subj(?vp)>] -> NP[NUM=?n, PER=?m, SEM=?subj] VP[+PRINC, NUM=?n, Per=?m, TENSE=?t, SEM=?vp]
 
+
 # Reescritura de NP
 NP[NUM=?n, PER=?m, SEM=?pro] -> PropN[NUM=?n, PER=?m, GEN=?p, SEM=?pro] 
 NP[NUM=?n, PER=?m, SEM=?pro] -> Pron[NUM=?n, PER=?m, GEN=?p, SEM=?pro]
@@ -15,8 +16,13 @@ NP[NUM=?n, PER=?m, GEN=?g, SEM=<?det(?nom)>] -> Det[NUM=?n,GEN=?g, PER=?m, SEM=?
 NP[NUM=?n, PER=?m, GEN=?g, SEM=<?det(?nom)>] -> Det[NUM=?n,GEN=?g, PER=?m, SEM=?det] N[NUM=?n,GEN=?g, SEM=?nom] A[Num=?n, GEN=?g]
 
 # Reescritura de VP
+
+# VPs intransitivos
+
 VP[+PRINC, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> FV[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
 VP[+PRINC, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> FV[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+
+# VPs en subordinadas 
 VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> V1[+M, +SUBJ, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
 VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> V1[+M, +INF, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
 VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> V1[+M, +GDIO, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
@@ -24,24 +30,32 @@ VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> V1[+M, +GDIO, TENSE=?t, PER=?p, NU
 VP[NUM=?n, Per=?p] -> V[NUM=?n, Per=?p] NP[NUM=?j, Per=?q]
 VP[NUM=?n, Per=?p] -> V[NUM=?n, Per=?p] Adv
 
-# Reescritura de V1 (Frases verbales formadas po un verbo principal o una perífrasis verbal)
+
+# Reescritura de V1 (Frases verbales formadas por un verbo principal o una perífrasis verbal)
+
 V1[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
-V1[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
-V1[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] - 
+V1[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s] 
+V1[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> 
 
 
 # ###################
 # Léxico
 # ###################
 
+# Pronombres demostrativos
+
 Det[NUM=sg,GEN=masc, PER=3] -> 'este' | 'el' | 'ese'
 Det[NUM=pl,GEN=masc, PER=3] -> 'estos' | 'los' | 'esos'
 Det[NUM=sg,GEN=fem, PER=3] -> 'esta' | 'la' | 'esa'
 Det[NUM=pl,GEN=fem, PER=3] -> 'estas' | 'las' | 'esas'
 
+# Nombres propios
+
 PropN[NUM=sg, Per=3, GEN=masc]->  'Fede' | 'Fer' | 'Martín' | 'Pablo' | 'Matías' | 'Carlos' | 'José' | 'Rodrigo' | 'Andrés' | 'Federico' | 'Fernando' | 'Santi' | 'Santiago'
 PropN[NUM=sg, Per=3, GEN=fem]-> 'Cata' | 'Catalina' | 'Julia' | 'Maca' | 'Vicky' | |'Rocío' | 'Romina' | 'Romi' | 'Natalia' 
 
+
+# Pronombres personales
 
 Pron[NUM=sg, PER=1, GEN=?p] -> 'yo'
 Pron[NUM=sg, PER=2, GEN=?p] -> 'vos' | 'usted'

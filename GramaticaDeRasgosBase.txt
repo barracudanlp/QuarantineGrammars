@@ -19,23 +19,23 @@ NP[NUM=?n, PER=?m, GEN=?g, SEM=<?det(?nom)>] -> Det[NUM=?n,GEN=?g, PER=?m, SEM=?
 
 # VPs intransitivos
 
-VP[+PRINC, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> FV[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
-VP[+PRINC, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> FV[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[+PRINC, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> Verb[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[+PRINC, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> Verb[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
 
 # VPs en subordinadas 
-VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> V1[+M, +SUBJ, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
-VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> V1[+M, +INF, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
-VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> V1[+M, +GDIO, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> Verb[+M, +SUBJ, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> Verb[+M, +INF, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> Verb[+M, +GDIO, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
 
 VP[NUM=?n, Per=?p] -> V[NUM=?n, Per=?p] NP[NUM=?j, Per=?q]
 VP[NUM=?n, Per=?p] -> V[NUM=?n, Per=?p] Adv
 
 
-# Reescritura de V1 (Frases verbales formadas por un verbo principal o una perífrasis verbal)
+# Reescritura de Verb (Frases verbales formadas por un verbo principal o una perífrasis verbal, equivale grosso modo a Verb en Chomsky 1957)
 
-V1[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
-V1[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s] 
-V1[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> 
+Verb[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+Verb[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s] 
+Verb[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> 
 
 
 # ###################

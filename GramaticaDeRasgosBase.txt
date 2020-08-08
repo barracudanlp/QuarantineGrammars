@@ -45,23 +45,42 @@ Verb[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[+M, +IMP, TENSE=?t, PER=?p
 
 
 # ###################
-# Léxico
+# Léxico de base
 # ###################
 
-# Pronombres demostrativos
+# Pronombres demostrativos (falta completar la semántica)
 
-Det[NUM=sg,GEN=masc, PER=3] -> 'este' | 'el' | 'ese'
-Det[NUM=pl,GEN=masc, PER=3] -> 'estos' | 'los' | 'esos'
-Det[NUM=sg,GEN=fem, PER=3] -> 'esta' | 'la' | 'esa'
-Det[NUM=pl,GEN=fem, PER=3] -> 'estas' | 'las' | 'esas'
+Det[NUM=sg,GEN=masc, PER=3, SEM=<>] -> 'este' | 'el' | 'ese'
+Det[NUM=pl,GEN=masc, PER=3, SEM=<>] -> 'estos' | 'los' | 'esos'
+Det[NUM=sg,GEN=fem, PER=3, SEM=<>] -> 'esta' | 'la' | 'esa'
+Det[NUM=pl,GEN=fem, PER=3, SEM=<>] -> 'estas' | 'las' | 'esas'
 
-# Nombres propios
+# Nombres propios (una lista preliminar, habría que ver si los nombres propios se pueden incorporar de un modo más automatizado)
 
-PropN[NUM=sg, Per=3, GEN=masc]->  'Fede' | 'Fer' | 'Martín' | 'Pablo' | 'Matías' | 'Carlos' | 'José' | 'Rodrigo' | 'Andrés' | 'Federico' | 'Fernando' | 'Santi' | 'Santiago'
-PropN[NUM=sg, Per=3, GEN=fem]-> 'Cata' | 'Catalina' | 'Julia' | 'Maca' | 'Vicky' | |'Rocío' | 'Romina' | 'Romi' | 'Natalia' 
+PropN[+ANIM,NUM=sg,GEN=masc,SEM=<\P.P(martin)>] -> 'Martín'
+PropN[+ANIM,NUM=sg,GEN=masc,SEM=<\P.P(matias)>] -> 'Matías'
+PropN[+ANIM,NUM=sg,GEN=masc,SEM=<\P.P(chafa)>] -> 'Chafa'
+PropN[+ANIM,NUM=sg,GEN=masc,SEM=<\P.P(fede)>] -> 'Fede' | 'Federico'
+PropN[+ANIM,NUM=sg,GEN=masc,SEM=<\P.P(pablo)>] -> 'Pablo' 
+PropN[+ANIM,NUM=sg,GEN=masc,SEM=<\P.P(fer)>] -> 'Fer' | 'Fernando' | 'Ferchu'
+PropN[+ANIM,NUM=sg,GEN=masc,SEM=<\P.P(carlos)>] -> 'Carlos'
+PropN[+ANIM,NUM=sg,GEN=masc,SEM=<\P.P(jose)>] -> 'José'
+PropN[+ANIM,NUM=sg,GEN=masc,SEM=<\P.P(rodrigo)>] -> 'Rodrigo'
+PropN[+ANIM,NUM=sg,GEN=masc,SEM=<\P.P(andres)>] -> 'Andrés'
+PropN[+ANIM,NUM=sg,GEN=masc,SEM=<\P.P(santiago)>] -> 'Santiago' | 'Santi'
+PropN[+ANIM,NUM=sg,GEN=fem,SEM=<\P.P(julia)>] -> 'Julia'
+PropN[+ANIM,NUM=sg,GEN=fem,SEM=<\P.P(cata)>] -> 'Cata' | 'Catalina'
+PropN[+ANIM,NUM=sg,GEN=fem,SEM=<\P.P(macarena)>] -> 'Maca' | 'Macarena'
+PropN[+ANIM,NUM=sg,GEN=fem,SEM=<\P.P(victoria)>] -> 'Vicky' | 'Victoria'
+PropN[+ANIM,NUM=sg,GEN=fem,SEM=<\P.P(romi)>] -> 'Romi' | 'Romina'
+PropN[+ANIM,NUM=sg,GEN=fem,SEM=<\P.P(rocio)>] -> 'Rocío'
+PropN[+ANIM,NUM=sg,GEN=fem,SEM=<\P.P(natalia)>] -> 'Nati' | 'Natalia'
+PropN[-ANIM,NUM=sg,GEN=masc,SEM=<\P.P(ficciones)>] -> 'Ficciones'
+PropN[-ANIM,NUM=sg,GEN=fem,SEM=<\P.P(argentina)>] -> 'Argentina'
+PropN[-ANIM,NUM=sg,GEN=masc,SEM=<\P.P(rayuela)>] -> 'Rayuela'
 
 
-# Pronombres personales
+# Pronombres personales ()
 
 Pron[NUM=sg, PER=1, GEN=?p] -> 'yo'
 Pron[NUM=sg, PER=2, GEN=?p] -> 'vos' | 'usted'

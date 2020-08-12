@@ -1,5 +1,6 @@
 % start S
-#Adaptado al español de la gramática elaborada por Klein para el libro de NLTK
+# Esta es la gramática de base a la que hay que concatenarle abajo las reglas 
+# léxicas por cada categoría.
 #
 # ###################
 # Reglas de la Gramática
@@ -48,12 +49,30 @@ Verb[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[+M, +IMP, TENSE=?t, PER=?p
 # Léxico de base
 # ###################
 
-# Pronombres demostrativos (falta completar la semántica)
+
+# Determinantes y pronombres demostrativos (falta completar la semántica)
+# Los dejo comentados para que no molesten. 
+# Habría que descomentar cuando hagamos los Ns. 
+
+# Para los determinantes definidos, demostrativos y demás tenemos que resolver
+# qué vamos a hacer con la semántica de las descripciones definidas.
+# Agregar operador iota quizás?
+
 
 #Det[NUM=sg,GEN=masc, PER=3, SEM=<>] -> 'este' | 'el' | 'ese'
 #Det[NUM=pl,GEN=masc, PER=3, SEM=<>] -> 'estos' | 'los' | 'esos'
 #Det[NUM=sg,GEN=fem, PER=3, SEM=<>] -> 'esta' | 'la' | 'esa'
 #Det[NUM=pl,GEN=fem, PER=3, SEM=<>] -> 'estas' | 'las' | 'esas'
+
+#Det[NUM=sg,GEN=masc,SEM=<\P Q.exists x.(singular(x) & P(x) & Q(x))>] -> 'algún'
+#Det[NUM=pl,GEN=masc,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'algunos'
+#Det[NUM=sg,GEN=fem,SEM=<\P Q.exists x.(singular (x) & P(x) & Q(x))>] -> 'alguna'
+#Det[NUM=pl,GEN=fem,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'algunas'
+#Det[NUM=sg,GEN=masc,SEM=<\P Q.exists x.(singular(x) & P(x) & Q(x))>] -> 'un'
+#Det[NUM=sg,GEN=fem,SEM=<\P Q.exists x.(singular(x) & P(x) & Q(x))>] -> 'una'
+#Det[NUM=pl,GEN=masc,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'unos'
+#Det[NUM=pl,GEN=fem,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'unas'
+
 
 # Nombres propios (una lista preliminar, habría que ver si los nombres propios se pueden incorporar de un modo más automatizado)
 

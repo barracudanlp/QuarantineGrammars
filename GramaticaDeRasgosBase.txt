@@ -28,7 +28,7 @@ NP[NUM=?n, PER=?m, GEN=?g, SEM=<?det(?nom)>] -> Det[NUM=?n,GEN=?g, PER=?m, SEM=?
 # VPs intransitivos
 
 VP[+PRINC, MODE=IND, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> Verb[SUBCAT=M, MODE=IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
-VP[+PRINC, MODE=INP, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> V[SUBCAT=M, MODE=IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[+PRINC, MODE=IMP, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> V[SUBCAT=M, MODE=IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
 
 # VPs transitivos
 VP[+PRINC, MODE=IND, NUM=?n, Per=?p, TENSE=?t, SEM=<\e.(?v(e) & ?obj(\x. tema(e, x)))>] -> Verb[SUBCAT=M, MODE=IND, TENSE=?t, PER=?p, NUM=?n, SEM=?v] NP[SEM=<?obj>]

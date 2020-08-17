@@ -7,9 +7,9 @@
 # ###################
 
 # Reescritura de la Raíz
-S[SEM = <exists e. ?subj(\x. agente(e,x)) & ?vp(e)>] -> NP[NUM=?n, PER=?m, SEM=?subj] VP[+PRINC, NUM=?n, Per=?m, TENSE=?t, SEM=?vp]
-S[SEM = <exists e. orden(e) & ?voc(\x. instigado(e,x)) & ?vp(e)>] -> PropN[+ANIM, SEM=?voc] Comma VP[+IMP, NUM=?n, Per=?m, TENSE=?t, SEM=?vp]
-S[SEM = <exists e. orden(e) & ?voc(\x. instigado(e,x)) & ?vp(e)>] -> NP[NUM=?n, PER=?m, SEM=?voc] Comma Pron[PER=2] VP[+IMP, NUM=?n, Per=?m, TENSE=?t, SEM=?vp]
+S[SEM = <exists e. ?subj(\x. agente(e,x)) & ?vp(e)>] -> NP[NUM=?n, PER=?m, SEM=?subj] VP[+PRINC, MODE=IND, NUM=?n, Per=?m, TENSE=?t, SEM=?vp]
+S[SEM = <exists e. orden(e) & ?voc(\x. instigado(e,x)) & ?vp(e)>] -> PropN[+ANIM, SEM=?voc] Comma VP[+PRINC, MODE=IMP ,NUM=?n, Per=?m, TENSE=?t, SEM=?vp]
+S[SEM = <exists e. orden(e) & ?voc(\x. instigado(e,x)) & ?vp(e)>] -> NP[NUM=?n, PER=?m, SEM=?voc] Comma Pron[PER=2] VP[+PRINC, MODE=IMP, NUM=?n, Per=?m, TENSE=?t, SEM=?vp]
 
 
 # Signos de puntuación
@@ -27,18 +27,18 @@ NP[NUM=?n, PER=?m, GEN=?g, SEM=<?det(?nom)>] -> Det[NUM=?n,GEN=?g, PER=?m, SEM=?
 
 # VPs intransitivos
 
-VP[+PRINC, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> Verb[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
-VP[+IMP, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> V[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[+PRINC, MODE=IND, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> Verb[SUBCAT=M, MODE=IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[+PRINC, MODE=INP, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> V[SUBCAT=M, MODE=IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
 
 # VPs transitivos
-VP[+PRINC, NUM=?n, Per=?p, TENSE=?t, SEM=<\e.(?v(e) & ?obj(\x. tema(e, x)))>] -> Verb[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?v] NP[SEM=<?obj>]
-VP[+PRINC, NUM=?n, Per=?p, TENSE=?t, SEM=<\e.(?v(e) & ?obj(\x. tema(e, x)))>] -> Verb[+M, +IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?v] NP[SEM=<?obj>]
+VP[+PRINC, MODE=IND, NUM=?n, Per=?p, TENSE=?t, SEM=<\e.(?v(e) & ?obj(\x. tema(e, x)))>] -> Verb[SUBCAT=M, MODE=IND, TENSE=?t, PER=?p, NUM=?n, SEM=?v] NP[SEM=<?obj>]
+VP[+PRINC, MODE=IMP, NUM=?n, Per=?p, TENSE=?t, SEM=<\e.(?v(e) & ?obj(\x. tema(e, x)))>] -> Verb[SUBCAT=M, MODE=IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?v] NP[SEM=<?obj>]
 
 
 # VPs en subordinadas 
-VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> Verb[+M, +SUBJ, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
-VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> Verb[+M, +INF, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
-VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> Verb[+M, +GDIO, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[-PRINC, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> Verb[SUBCAT=M, MODE=SUBJ, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[-PRINC, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> Verb[SUBCAT=M, MODE=INF, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+VP[-PRINC, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> Verb[SUBCAT=M, MODE=GDIO, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
 
 
 
@@ -46,7 +46,7 @@ VP[+SUB, NUM=?n, Per=?p, TENSE=?t, SEM=?s] -> Verb[+M, +GDIO, TENSE=?t, PER=?p, 
 # Reescritura de Verb (Frases verbales formadas por un verbo principal o una perífrasis verbal, equivale grosso modo a Verb en Chomsky 1957)
 # Por ahora pongo solo verbales sintéticos. Más adelante habría que agregar verbales analíticos (distintos tipos de perífrasis)
 
-Verb[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[+M, +IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+Verb[SUBCAT=M, MODE=IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[SUBCAT=M, MODE=IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
 
 
 # ###################

@@ -69,14 +69,14 @@ Verb[SUBCAT=M, MODE=IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[SUBCAT=M, MODE=I
 #Det[NUM=sg,GEN=fem, PER=3, SEM=<>] -> 'esta' | 'la' | 'esa'
 #Det[NUM=pl,GEN=fem, PER=3, SEM=<>] -> 'estas' | 'las' | 'esas'
 
-#Det[NUM=sg,GEN=masc,SEM=<\P Q.exists x.(singular(x) & P(x) & Q(x))>] -> 'algún'
-#Det[NUM=pl,GEN=masc,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'algunos'
-#Det[NUM=sg,GEN=fem,SEM=<\P Q.exists x.(singular (x) & P(x) & Q(x))>] -> 'alguna'
-#Det[NUM=pl,GEN=fem,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'algunas'
-#Det[NUM=sg,GEN=masc,SEM=<\P Q.exists x.(singular(x) & P(x) & Q(x))>] -> 'un'
-#Det[NUM=sg,GEN=fem,SEM=<\P Q.exists x.(singular(x) & P(x) & Q(x))>] -> 'una'
-#Det[NUM=pl,GEN=masc,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'unos'
-#Det[NUM=pl,GEN=fem,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'unas'
+Det[NUM=sg,GEN=masc,SEM=<\P Q.exists x.(singular(x) & P(x) & Q(x))>] -> 'algún'
+Det[NUM=pl,GEN=masc,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'algunos'
+Det[NUM=sg,GEN=fem,SEM=<\P Q.exists x.(singular (x) & P(x) & Q(x))>] -> 'alguna'
+Det[NUM=pl,GEN=fem,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'algunas'
+Det[NUM=sg,GEN=masc,SEM=<\P Q.exists x.(singular(x) & P(x) & Q(x))>] -> 'un'
+Det[NUM=sg,GEN=fem,SEM=<\P Q.exists x.(singular(x) & P(x) & Q(x))>] -> 'una'
+Det[NUM=pl,GEN=masc,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'unos'
+Det[NUM=pl,GEN=fem,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'unas'
 
 
 # Nombres propios (una lista preliminar, habría que ver si los nombres propios se pueden incorporar de un modo más automatizado)

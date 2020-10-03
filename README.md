@@ -1,16 +1,10 @@
 # Descripción de lo que hay:
 
-1) Descargar de https://github.com/TALP-UPC/FreeLing/tree/master/data/es/dictionary/entries MM.verb.txt, MM.adj.txt, MM.adv.txt y MM.nom.txt y de https://github.com/TALP-UPC/FreeLing/tree/master/data/es/es-ar/dictionary/entries AR.verb.txt y colocarlos en una carpeta llamada freeling (Eso ya está hecho en este repositorio).
+El objetivo de este repositorio es armar una gramática independiente de contexto aumentada con rasgos (una fcfg) para el español con la mayor cobertura posible, pensada para ser usada con la librería NLTK en Python3. La gramática incluye, a su vez, un rasgo SEM que permite construir, junto con el parseo de la oración, su interpretación semántica usando un sistema de notación neodavidsoniano. 
 
-2) Correr el script script_para_freeling.sh (bash script_para_freeling.sh en la terminal). Eso va a crear el directorio subclases y un conjunto de archivos con extensión csv que compilan por separado palabras con propiedades morfológicas iguales (e.g. todos los nombres masculinos singulares en un csv, todos los femeninos plurales en otro, etc.)
- 
-3) Correr el script script_armado_gram_cfg.py. El script va a tomar los archivos csv que están en subclases y va a recopilar todas las palabras que están en ellos en txt adaptándolas para que la etiqueta de eagles se transforme en rasgos que pueda leer la gramática de nltk. Finalmente, se va a generar en este directorio un archivo llamado gram_para_fcfg.fcfg, que compila todos los léxicos y la gramática y que puede ser utilizado para parsear oraciones con nltk.
+Para el armado de la gramática, usamos los diccionarios de freeling MM.verb.txt, MM.adj.txt, MM.adv.txt y MM.nom.txt, que se pueden encontrar en https://github.com/TALP-UPC/FreeLing/tree/master/data/es/dictionary/entries, y AR.verb.txt, que se puede encontrar en de https://github.com/TALP-UPC/FreeLing/tree/master/data/es/es-ar/dictionary/entries. En el repositorio, todos estos diccionarios están reunidos en un solo archivo freeling/all_categories.txt
 
-Pasos a hacer a futuro:
+Para armar la gramática utilizamos como punto de partida el archivo GramaticaDeRasgosBase.txt, que contiene una gramática reducida. La Jupyter notebook armado_reglas.ipynb posee el script (en construcción) para procesar la información proveniente de los diccionarios de freeling y, en función de eso, concatenar a la gramática en GramaticaDeRasgosBase.txt un conjunto de reglas que introducen nodos no terminales. Esa gramática más robusta se guarda en el archivo integral_grammar.fcfg. 
 
-- Revisar gramática
-- Revisar subclases morfológicas en función de los rasgos que vaya a tener la gramática
-- Revisar el script en función de eso
-- Todo lo que hay subido ahora es para una gramática no eventiva, si vamos a asumir una eventiva, hay que adaptar todo eso a una semántica de ese tipo.
-
+Los archivos test.ipynb y test.py son meramente scripts para probar la gramática integral_grammar.fcfg en NLTK.
 

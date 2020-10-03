@@ -1,0 +1,2 @@
+Este directorio contiene una compilación de los diccionarios de adjetivos, nombres, verbos y demás clases de palabras, de freeling. Fueron tomados del repositorio de freeling:
+https://github.com/TALP-UPC/FreeLing/tree/master/data/es/dictionary/entries

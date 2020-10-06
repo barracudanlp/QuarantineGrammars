@@ -1,3 +1,12 @@
+# Dicts de freeling
+freeling
+
+# But not these files...
+!freeling/DESCRIPCION.txt
+!freeling/*.sh
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

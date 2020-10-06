@@ -1,38 +1,25 @@
-#!/bin/bash
-
-if [ -d MM.adj.txt ]; then
-	rm MM.adj.txt
-fi
-if [ -d MM.adv.txt ]; then
-	rm MM.adv.txt
-fi
-if [ -d MM.int.txt ]; then
-	rm MM.int.txt
-fi
-if [ -d MM.nom.txt ]; then
-	rm MM.nom.txt
-fi
-if [ -d MM.tanc.txt ]; then
-	rm MM.tanc.txt
-fi
-if [ -d MM.vaux.txt ]; then
-	rm MM.vaux.txt
-fi
-if [ -d MM.verb.txt ]; then
-	rm MM.verb.txt
-fi
-if [ -d AR.verb.txt ]; then
-	rm AR.verb.txt
-fi
+#!/bin/bash 
 
 
-wget -O MM.adj.txt "https://raw.githubusercontent.com/TALP-UPC/FreeLing/master/data/es/dictionary/entries/MM.adj"
-wget -O MM.adv.txt "https://raw.githubusercontent.com/TALP-UPC/FreeLing/master/data/es/dictionary/entries/MM.adv"
-wget -O MM.int.txt "https://raw.githubusercontent.com/TALP-UPC/FreeLing/master/data/es/dictionary/entries/MM.int"
-wget -O MM.nom.txt "https://raw.githubusercontent.com/TALP-UPC/FreeLing/master/data/es/dictionary/entries/MM.nom"
-wget -O MM.tanc.txt "https://raw.githubusercontent.com/TALP-UPC/FreeLing/master/data/es/dictionary/entries/MM.tanc"
-wget -O MM.vaux.txt "https://raw.githubusercontent.com/TALP-UPC/FreeLing/master/data/es/dictionary/entries/MM.vaux"
-wget -O MM.verb.txt "https://raw.githubusercontent.com/TALP-UPC/FreeLing/master/data/es/dictionary/entries/MM.verb"
-wget -O AR.verb.txt "https://raw.githubusercontent.com/TALP-UPC/FreeLing/master/data/es/es-ar/dictionary/entries/AR.verb"
+get_dict () {
+	if [ -f $1.txt ]; then
+		rm $1.txt
+	fi
+	if [[ $2 == "es" ]]; then
+		wget -O $1.txt "https://raw.githubusercontent.com/TALP-UPC/FreeLing/master/data/es/dictionary/entries/$1"
+	elif [[ $2 == "es-ar" ]]; then
+		wget -O $1.txt "https://raw.githubusercontent.com/TALP-UPC/FreeLing/master/data/es/$2/dictionary/entries/$1"
+	fi
+}
+
+
+get_dict MM.adj es
+get_dict MM.adv es
+get_dict MM.int es
+get_dict MM.nom es
+get_dict MM.tanc es
+get_dict MM.vaux es
+get_dict MM.verb es
+get_dict AR.verb es-ar
 
 

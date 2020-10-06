@@ -1,5 +1,6 @@
-# Dicts de freeling
+# Dicts de freeling y reglas automáticas
 freeling
+reglas_automaticas
 
 # But not these files...
 !freeling/DESCRIPCION.txt

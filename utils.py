@@ -5,6 +5,8 @@ import os
 import nltk
 from shutil import copyfile
 from rules_builder import MakeRule, NoMapping
+import random
+import string
 
 def load_freeling_vocabulary():
     freeling_all = list()
@@ -12,10 +14,6 @@ def load_freeling_vocabulary():
     for freeling_file in glob.glob("./freeling/*.*.txt"):
         vocab_df = vocab_df.append(pd.read_csv(freeling_file, sep=" ",names=["forma","lema","tag"]))
     return vocab_df
-
-
-import random
-import string
 
 def get_random_string(length):
     letters = string.ascii_lowercase

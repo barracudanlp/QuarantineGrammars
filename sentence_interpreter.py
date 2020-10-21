@@ -16,9 +16,9 @@ def run_interpreter(sentence,tags_mapping,vocab_df):
     if not isinstance(interpretation, Exception):
         for results in interpretation:
             for (synrep, semrep) in results:
-                print(f"\n{semrep}\n")
+                print(f"\n\t{semrep}\n")
     else:
-        print(f"\n{interpretation}\n")
+        print(f"\n\t{interpretation}\n")
 
 
 def interpreter_interface():

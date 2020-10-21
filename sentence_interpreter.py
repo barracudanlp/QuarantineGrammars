@@ -5,41 +5,36 @@ import argparse
 # Descomentar si no se tiene el recurso
 #nltk.download("punkt")
 
-def run_interpreter(sentence):
+def interpreter_setup():
     tags_mapping = load_json("tags_mapping.json")
     vocab_df = load_freeling_vocabulary()
-    try:
-        interpretation = interpret_sentence(sentence,vocab_df,tags_mapping)
+    return tags_mapping,vocab_df 
+
+
+def run_interpreter(sentence,tags_mapping,vocab_df):
+    interpretation = interpret_sentence(sentence,vocab_df,tags_mapping)
+    if not isinstance(interpretation, Exception):
         for results in interpretation:
             for (synrep, semrep) in results:
                 print(f"\n{semrep}\n")
-    except ValueError as exception:
-        print(f"\n{exception}\n")
-    
-"""
+    else:
+        print(f"\n{interpretation}\n")
 
-    Esto no está andando. Lo dejo para revisar
 
-    sentence = input("Oración: ")
-
+def interpreter_interface():
+    tags_mapping,vocab_df = interpreter_setup()
+    sentence = input("Oración (type 'q' to quit): ")
     while sentence != "q":
-        print("type 'q' to quit")
-        interpretation = interpret_sentence(sentence,vocab_df,tags_mapping)
-        for results in interpretation:
-            for (synrep, semrep) in results:
-                print(semrep)
-        sentence = input("Oración: ")
+        run_interpreter(sentence,tags_mapping,vocab_df)
+        sentence = input("Oración (type 'q' to quit): ")
 
- """   
 
 if __name__ == "__main__":
     """
-        Interfaz para la interpretación de una oración
-        python sentence_interpreter.py "él canta"
+        Interfaz para la interpretación de oraciones
     """
-    parser = argparse.ArgumentParser(description='Interpretar una oración')
-    parser.add_argument('sentence',metavar='SENTENCE',type=str,help='Oración')
-    args = parser.parse_args()
+    interpreter_interface()
 
-    run_interpreter(args.sentence)
 
+    
+    

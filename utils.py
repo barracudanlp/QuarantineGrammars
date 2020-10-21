@@ -13,8 +13,18 @@ def load_freeling_vocabulary():
         vocab_df = vocab_df.append(pd.read_csv(freeling_file, sep=" ",names=["forma","lema","tag"]))
     return vocab_df
 
+
+import random
+import string
+
+def get_random_string(length):
+    letters = string.ascii_lowercase
+    result_str = ''.join(random.choice(letters) for i in range(length))
+    return result_str
+
 def create_tmp_grammar():
-    tmp_grammar = "tmp_grammar.fcfg"
+    random_str = get_random_string(8)
+    tmp_grammar = f"{random_str}.fcfg"
     copyfile("GramaticaDeRasgosBase.txt", tmp_grammar)
     return tmp_grammar
     
@@ -45,7 +55,10 @@ def interpret_sentence(sentence,vocab_df,tags_mapping):
     tok_sentence = nltk.tokenize.word_tokenize(sentence)
     sentence_rules = create_sentence_rules(tok_sentence,tags_mapping,vocab_df)
     append_rules_to_grammar(sentence_rules,grammar)
-    interpretation = nltk.interpret_sents([sentence], grammar)
+    try:
+        interpretation = nltk.interpret_sents([sentence], grammar)
+    except ValueError as exception:
+        interpretation = exception
     os.remove(grammar)
     return interpretation
 

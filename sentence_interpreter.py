@@ -1,4 +1,4 @@
-from utils import *
+from quarentine_grammars.utils import *
 from rules_builder import MakeRule, NoMapping
 import argparse
 

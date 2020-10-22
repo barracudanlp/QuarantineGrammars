@@ -4,14 +4,14 @@ import json
 import os
 import nltk
 from shutil import copyfile
-from rules_builder import MakeRule, NoMapping
+from .rules_builder import MakeRule, NoMapping
 import random
 import string
 
 def load_freeling_vocabulary():
     freeling_all = list()
     vocab_df = pd.DataFrame()
-    for freeling_file in glob.glob("./freeling/*.*.txt"):
+    for freeling_file in glob.glob("freeling/*.*.txt"):
         vocab_df = vocab_df.append(pd.read_csv(freeling_file, sep=" ",names=["forma","lema","tag"]))
     return vocab_df
 
@@ -22,8 +22,8 @@ def get_random_string(length):
 
 def create_tmp_grammar():
     random_str = get_random_string(8)
-    tmp_grammar = f"{random_str}.fcfg"
-    copyfile("GramaticaDeRasgosBase.txt", tmp_grammar)
+    tmp_grammar = f"grammars/{random_str}.fcfg"
+    copyfile("grammars/GramaticaDeRasgosBase.txt", tmp_grammar)
     return tmp_grammar
     
 def append_rules_to_grammar(rules,grammar):

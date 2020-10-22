@@ -1,12 +1,11 @@
 from quarentine_grammars.utils import *
-from quarentine_grammars.rules_builder import MakeRule, NoMapping
 import argparse
 
 # Descomentar si no se tiene el recurso
 #nltk.download("punkt")
 
 def interpreter_setup():
-    tags_mapping = load_json("tags_mapping.json")
+    tags_mapping = load_json("quarentine_grammars/tags_mapping.json")
     vocab_df = load_freeling_vocabulary()
     return tags_mapping,vocab_df 
 

@@ -1,5 +1,5 @@
 from quarentine_grammars.utils import *
-from rules_builder import MakeRule, NoMapping
+from quarentine_grammars.rules_builder import MakeRule, NoMapping
 import argparse
 
 # Descomentar si no se tiene el recurso

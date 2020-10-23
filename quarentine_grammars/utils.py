@@ -7,11 +7,12 @@ from shutil import copyfile
 from .rules_builder import MakeRule, NoMapping
 import random
 import string
+from .paths import freeling_glob_paths, base_grammar_path, grammars_dir_path
 
 def load_freeling_vocabulary():
     freeling_all = list()
     vocab_df = pd.DataFrame()
-    for freeling_file in glob.glob("freeling/*.*.txt"):
+    for freeling_file in glob.glob(freeling_glob_paths):
         vocab_df = vocab_df.append(pd.read_csv(freeling_file, sep=" ",names=["forma","lema","tag"]))
     return vocab_df
 
@@ -22,8 +23,8 @@ def get_random_string(length):
 
 def create_tmp_grammar():
     random_str = get_random_string(8)
-    tmp_grammar = f"grammars/{random_str}.fcfg"
-    copyfile("grammars/GramaticaDeRasgosBase.txt", tmp_grammar)
+    tmp_grammar = os.path.join(grammars_dir_path,f"{random_str}.fcfg")
+    copyfile(base_grammar_path, tmp_grammar)
     return tmp_grammar
     
 def append_rules_to_grammar(rules,grammar):

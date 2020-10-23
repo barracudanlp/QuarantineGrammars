@@ -1,0 +1,5 @@
+Este directorio contiene un archivo en el que se compilan los diccionarios de adjetivos, nombres, verbos y demás clases de palabras, de freeling. Fueron tomados del repositorio de freeling:
+https://github.com/TALP-UPC/FreeLing/tree/master/data/es/dictionary/entries. Para descargar cada uno de los diccionarios por separado, correr el siguiente comando: 
+
+sh download-dictionaries.sh
+

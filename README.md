@@ -16,6 +16,7 @@ Para instalar el entorno virtual necesario para ejecutar los scripts que se encu
     5. Ejecutar ```pipenv --python 3.7.5```
     6. Ejecutar ```pipenv install```
     7. Dentro de la carpeta delivery ejecutar ```./download_resources.sh```
+    8. Run: pipenv run python -m ipykernel install --user --name=`pipenv run basename '$VIRTUAL_ENV'`
 
 # Activación del entorno virtual
     

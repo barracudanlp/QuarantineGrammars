@@ -8,6 +8,7 @@ from .rules_builder import MakeRule, NoMapping
 import random
 import string
 from .paths import freeling_glob_paths, base_grammar_path, grammars_dir_path
+from nltk.parse.featurechart import InstantiateVarsChart
 
 def load_freeling_vocabulary():
     freeling_all = list()
@@ -55,7 +56,8 @@ def interpret_sentence(sentence,vocab_df,tags_mapping):
     sentence_rules = create_sentence_rules(tok_sentence,tags_mapping,vocab_df)
     append_rules_to_grammar(sentence_rules,grammar)
     try:
-        interpretation = nltk.interpret_sents([sentence], grammar)
+        cp = nltk.parse.load_parser(grammar, trace=0, chart_class=InstantiateVarsChart)
+        interpretation = cp.parse(tok_sentence)
     except ValueError as exception:
         interpretation = exception
     os.remove(grammar)

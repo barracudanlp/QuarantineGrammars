@@ -9,13 +9,13 @@ Al ejecutar sentence_interpreter.py se crea una gramática temporal con las regl
 
 Para instalar el entorno virtual necesario para ejecutar los scripts que se encuentran en este módulo se debe:
 
-    1. Instalar pyenv (seguir instrucciones en [repositorio de pyenv][https://github.com/pyenv/pyenv])
+    1. Instalar pyenv (seguir instrucciones en [repositorio de pyenv](https://github.com/pyenv/pyenv))
     2. Con pyenv, instalar python 3.7.5 
         pyenv python 3.7.5
     3. Dentro de la carpeta del proyecto, ejecutar: 
         pyenv local 3.7.5
     4. Instalar pipenv utilizando pip 
-        pip3 install pipenv.
+        pip3 install pipenv
     5. Ejecutar: 
         pipenv --python 3.7.5
     6. Ejecutar
@@ -29,3 +29,4 @@ Para instalar el entorno virtual necesario para ejecutar los scripts que se encu
     
 Para activar el entorno virtual ejecutar:
         pipenv shell
+

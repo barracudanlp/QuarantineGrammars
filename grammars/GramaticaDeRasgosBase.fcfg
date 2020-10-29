@@ -13,12 +13,6 @@ S[SEM = <exists e. orden(e) & ?voc(\x. instigado(e,x)) & ?vp(e)>] -> PropN[+ANIM
 S[SEM = <exists e. orden(e) & ?voc(\x. instigado(e,x)) & ?vp(e)>] -> PropN[+ANIM, SEM=?voc] Comma Pron[PER=2] VP[+PRINC, MODE=IMP, NUM=?n, PER=2, SEM=?vp]
 S[SEM = <exists e. orden(e) & ?voc(\x. instigado(e,x)) & ?vp(e)>] -> Pron[PER=2] VP[+PRINC, MODE=IMP, NUM=?n, PER=2, SEM=?vp]
 
-## Transitivos
-#S[SEM = <exists e. ?subj(\x. agente(e,x)) & ?vp(e & ?obj)>] -> NP[NUM=?n, PER=?m, SEM=?subj] VP[+PRINC, MODE=IND, NUM=?n, PER=?m, SEM=?vp]
-
-
-
-
 # Signos de puntuación
 
 Comma -> ','

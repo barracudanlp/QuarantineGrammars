@@ -33,8 +33,8 @@ VP[+PRINC, MODE=IND, NUM=?n, PER=?p, TENSE=?t, SEM=?s] -> Verb[SUBCAT=M, MODE=IN
 VP[+PRINC, MODE=IMP, NUM=?n, PER=2, TENSE=?t, SEM=?s] -> V[SUBCAT=M, MODE=IMP, TENSE=?t, PER=2, NUM=?n, SEM=?s]
 
 # VPs transitivos
-VP[+PRINC, MODE=IND, NUM=?n, PER=?p, TENSE=?t, SEM=<\e.(?v(e) & ?obj(\x. tema(e, x)))>] -> Verb[SUBCAT=M, MODE=IND, TENSE=?t, PER=?p, NUM=?n, SEM=?v] NP[SEM=<?obj>]
-VP[+PRINC, MODE=IMP, NUM=?n, Per=?p, TENSE=?t, SEM=<\e.(?v(e) & ?obj(\x. tema(e, x)))>] -> Verb[SUBCAT=M, MODE=IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?v] NP[SEM=<?obj>]
+VP[+PRINC, MODE=IND, NUM=?n, PER=?p, TENSE=?t, SEM=<\e.(?v(e) & ?obj(\x. tema(e, x)))>] -> Verb[SUBCAT=M, MODE=IND, TENSE=?t, PER=?p, NUM=?n, SEM=?v] NP[SEM=?obj]
+VP[+PRINC, MODE=IMP, NUM=?n, PER=?p, TENSE=?t, SEM=<\e.(?v(e) & ?obj(\x. tema(e, x)))>] -> Verb[SUBCAT=M, MODE=IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?v] NP[SEM=?obj]
 
 
 # VPs en subordinadas 

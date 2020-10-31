@@ -5,15 +5,14 @@ verify_ssl = true
 
 [dev-packages]
 
-
 [packages]
 pandas = "*"
 jupyter = "*"
 ipykernel = "*"
-nltk = "*"
-
+nltk = {editable = true,git = "https://github.com/martinkondra/nltk"}
 
 [requires]
 python_version = "3.7.5"
 
-
+[pipenv]
+allow_prereleases = true

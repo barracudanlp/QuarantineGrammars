@@ -9,34 +9,42 @@ def interpreter_setup():
     vocab_df = load_freeling_vocabulary()
     return tags_mapping,vocab_df 
 
-def print_parse(interpretation,parse):
-    if parse == "syn":
+def print_parse(interpretation,syn):
+    if syn:
         for tree in interpretation:
-            print(f"\n\t{tree}\n")
-    elif parse == "sem":
+            tree.pprint()
+            #tree.draw()
+    else:
         for tree in interpretation:
             print(f"\n\t{root_semrep(tree)}\n")
 
-def print_interpretation(interpretation,parse):
+def print_interpretation(interpretation,syn):
     if isinstance(interpretation, Exception):
         print(f"\n\t{interpretation}\n")
     else:
-        print_parse(interpretation,parse)
+        print_parse(interpretation,syn)
 
-def interpreter_interface(parse="sem"):
+def interpreter_interface(syn):
     tags_mapping,vocab_df = interpreter_setup()
     sentence = input("Oración (type 'q' to quit): ")
     while sentence != "q":
         interpretation = interpret_sentence(sentence,vocab_df,tags_mapping)
-        print_interpretation(interpretation,parse)
+        print_interpretation(interpretation,syn)
         sentence = input("Oración (type 'q' to quit): ")
 
 
 if __name__ == "__main__":
     """
         Interfaz para la interpretación de oraciones
+        con el parámetro -p se puede pedir:
+        python interpret_sentences.py [-p [sem,syn]]
     """
-    interpreter_interface()
+
+    parser = argparse.ArgumentParser(description='Ejecutar rutina de algun/os canal/es')
+    parser.add_argument('-syn','--syn',action='store_true', help='Devolver la representación sintáctica')
+    args = parser.parse_args()
+
+    interpreter_interface(syn=args.syn)
 
 
     

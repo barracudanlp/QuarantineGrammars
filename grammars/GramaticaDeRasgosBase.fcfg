@@ -65,10 +65,10 @@ Verb[SUBCAT=M, MODE=IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[SUBCAT=M, MODE=I
 # Agregar operador iota quizás?
 
 
-#Det[NUM=sg,GEN=masc, PER=3, SEM=<\P Q. Q(iota x. (singular(x) & P(x)))>] -> 'este' | 'el' | 'ese'
-#Det[NUM=pl,GEN=masc, PER=3, SEM=<\P Q. Q(iota x. (plural(x) & P(x)))>] -> 'estos' | 'los' | 'esos'
-#Det[NUM=sg,GEN=fem, PER=3, SEM=<\P Q. Q(iota x. (singular(x) & P(x)))>] -> 'esta' | 'la' | 'esa'
-#Det[NUM=pl,GEN=fem, PER=3, SEM=<\P Q. Q(iota x. (plural(x) & P(x)))>] -> 'estas' | 'las' | 'esas'
+Det[NUM=sg,GEN=masc, PER=3, SEM=<\P Q. Q(iota x. (singular(x) & P(x)))>] -> 'este' | 'el' | 'ese'
+Det[NUM=pl,GEN=masc, PER=3, SEM=<\P Q. Q(iota x. (plural(x) & P(x)))>] -> 'estos' | 'los' | 'esos'
+Det[NUM=sg,GEN=fem, PER=3, SEM=<\P Q. Q(iota x. (singular(x) & P(x)))>] -> 'esta' | 'la' | 'esa'
+Det[NUM=pl,GEN=fem, PER=3, SEM=<\P Q. Q(iota x. (plural(x) & P(x)))>] -> 'estas' | 'las' | 'esas'
 
 Det[NUM=sg,GEN=masc,SEM=<\P Q.exists x.(singular(x) & P(x) & Q(x))>] -> 'algún'
 Det[NUM=pl,GEN=masc,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'algunos'

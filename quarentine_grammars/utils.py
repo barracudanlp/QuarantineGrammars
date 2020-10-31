@@ -10,11 +10,22 @@ import string
 from .paths import freeling_glob_paths, base_grammar_path, grammars_dir_path
 from nltk.parse.featurechart import InstantiateVarsChart
 
-def load_freeling_vocabulary():
-    freeling_all = list()
+
+class NoVocabFiles(Exception):
+    pass
+
+def vocabulary_to_df(vocabulary_paths):
     vocab_df = pd.DataFrame()
-    for freeling_file in glob.glob(freeling_glob_paths):
-        vocab_df = vocab_df.append(pd.read_csv(freeling_file, sep=" ",names=["forma","lema","tag"]))
+    for vocabulary_file in vocabulary_paths:
+        vocab_df = vocab_df.append(pd.read_csv(vocabulary_file, sep=" ",names=["forma","lema","tag"]))
+    return vocab_df
+
+def load_vocabulary():
+    vocabulary_paths = glob.glob(freeling_glob_paths)
+    if len(vocabulary_paths) > 0:
+        vocab_df = vocabulary_to_df(vocabulary_paths)
+    else:
+        raise NoVocabFiles("No vocabulary available. Please read README file for instructions")
     return vocab_df
 
 def get_random_string(length):
@@ -56,7 +67,7 @@ def interpret_sentence(sentence,vocab_df,tags_mapping):
     sentence_rules = create_sentence_rules(tok_sentence,tags_mapping,vocab_df)
     append_rules_to_grammar(sentence_rules,grammar)
     try:
-        cp = nltk.parse.load_parser(grammar, trace=0, chart_class=InstantiateVarsChart)
+        cp = nltk.parse.load_parser(grammar)
         interpretation = cp.parse(tok_sentence)
     except ValueError as exception:
         interpretation = exception

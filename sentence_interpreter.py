@@ -6,7 +6,7 @@ from nltk.sem.util import root_semrep
 
 def interpreter_setup():
     tags_mapping = load_json(tags_mapping_path)
-    vocab_df = load_freeling_vocabulary()
+    vocab_df = load_vocabulary()
     return tags_mapping,vocab_df 
 
 def print_parse(interpretation,syn):

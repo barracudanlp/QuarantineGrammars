@@ -33,7 +33,7 @@ class LexicalRule():
         return feats
 
     def _A_feats(self):
-        if subcategoria == "pron":
+        if self.subcategoria == "pron":
             feats = self._pronoun_feats(self)
         else:
             feats = [

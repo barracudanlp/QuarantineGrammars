@@ -31,7 +31,7 @@ def create_tmp_grammar():
 def append_rules_to_grammar(rules,grammar):
     with open(grammar,"a+") as current_grammar:
         for rule in rules:
-             current_grammar.write(f"{rule}\n")
+             current_grammar.write(f"\n{rule}")
 
 def get_rules(word,vocab_df,tags_mapping):
     word_rules = list()

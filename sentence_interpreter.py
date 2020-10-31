@@ -36,8 +36,7 @@ def interpreter_interface(syn):
 if __name__ == "__main__":
     """
         Interfaz para la interpretación de oraciones
-        con el parámetro -p se puede pedir:
-        python interpret_sentences.py [-p [sem,syn]]
+        python interpret_sentences.py [-syn]
     """
 
     parser = argparse.ArgumentParser(description='Ejecutar rutina de algun/os canal/es')

@@ -34,7 +34,7 @@ class LexicalRule():
 
     def _A_feats(self):
         if self.subcategoria == "pron":
-            feats = self._pronoun_feats(self)
+            feats = self._pronoun_feats()
         else:
             feats = [
                 f"NUM={self.numero}",

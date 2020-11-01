@@ -90,7 +90,7 @@ if __name__ == "__main__":
         
         Parámetros
         ----------
-        syn: bool=False
+        -syn: bool=False
             Si se provee el parámetro, crea una interfaz para obtener interpretaciones semánticas
             Si no se provee el parámetro, crea una interfaz para obtener interpretaciones sintácticas       
     """

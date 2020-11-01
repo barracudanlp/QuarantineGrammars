@@ -48,11 +48,16 @@
             "P": "pl",
             "N": "inv"
         },
-        "semantica": {
-            "posicion": [4,5],
-            "SP": "persona",
-            "G0": "lugar",
-            "V0": "otros"
+        "sema": {
+            "posicion": 4,
+            "S": "persona",
+            "G": "lugar",
+            "V": "otros"
+        },
+        "semb": {
+            "posicion": 5,
+            "P": "persona",
+            "0": "_"
         },
         "grado": {
             "posicion": 6,
@@ -168,7 +173,7 @@
             "N": "inv"
         },
         "poseedor":{
-            "posicion": 6,
+            "posicion": 5,
             "S":"sg",
             "P": "pl"
         }

@@ -74,6 +74,24 @@ class LexicalFeatures():
                 f"SEM=<\\x.({self.lemma}(x))>"
             ]
         return feats
+    
+    def _D_feats(self):
+        """
+            Define los features de un determinante.
+            ...
+
+            Returns
+            ----------
+            feats: list
+                Lista de features
+        """
+        feats = [
+            f"NUM={self.numero}",
+            f"GEN={self.genero}",
+            f"PER={self.persona}",
+            f"SEM=<\\x.({self.lemma}(x))>"
+        ]
+        return feats
 
 class NoMapping(Exception):
     """

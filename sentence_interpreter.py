@@ -1,12 +1,13 @@
 from quarentine_grammars.utils import *
 import argparse
-from quarentine_grammars.paths import tags_mapping_path
+from quarentine_grammars.paths import tags_mapping_path, freeling_glob_paths, base_grammar_path
 import json
 from nltk.sem.util import root_semrep
 
 def interpreter_setup():
     """
         Carga el mapeo de tags y los vocabularios.
+        ...
 
         Returns
         ----------
@@ -17,13 +18,14 @@ def interpreter_setup():
                 Vocabulario taggeado
     """
     tags_mapping = load_json(tags_mapping_path)
-    vocab_df = load_vocabulary()
+    vocab_df = load_vocabulary(freeling_glob_paths)
     return tags_mapping,vocab_df 
 
 def print_parse(interpretation,syn):
     """
         Imprime la interpretación sintáctica
         o semántica de la oración.
+        ...
 
         Parámetros
         ----------
@@ -44,6 +46,7 @@ def print_interpretation(interpretation,syn):
         Chequea si la interpretación obtenida es válida. 
         Si es válida, llama a su impresión.
         Si es inválida, imprime la excepción que ésta devolvió.
+        ...
 
         Parámetros
         ----------
@@ -62,6 +65,7 @@ def interpreter_interface(syn):
         de la interpreación semántica o sintáctica de oraciones.
         Carga los vocabularios y el mappeo de tags.
         Si en lugar de una oración se provee "q", termina.
+        ...
 
         Parámetros
         ----------
@@ -72,7 +76,7 @@ def interpreter_interface(syn):
     tags_mapping,vocab_df = interpreter_setup()
     sentence = input("Oración (type 'q' to quit): ")
     while sentence != "q":
-        interpretation = interpret_sentence(sentence,vocab_df,tags_mapping)
+        interpretation = interpret_sentence(sentence,vocab_df,tags_mapping,base_grammar_path)
         print_interpretation(interpretation,syn)
         sentence = input("Oración (type 'q' to quit): ")
 
@@ -82,6 +86,7 @@ if __name__ == "__main__":
         Inicializa una interfaz para la interpretación de oraciones
 
         python interpret_sentences.py [-syn]
+        ...
         
         Parámetros
         ----------

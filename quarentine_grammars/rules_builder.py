@@ -131,15 +131,22 @@ class MakeRule(LexicalFeatures):
             Si el valor encontrado en el tag no está
             mapeado, devuelve el valor del tag.
             ...
+
             Parámetros
             ----------
             rasgo_mapping: dict
                 Mapeo para un rasgo de la clase de palabra en cuestión
             tag:
                 Tag del diccionario
+
+            Returns
+            ----------
+            feature_value: str
+                Valor del rasgo tal como lo interpreta la gramática
         """
         position_tag = rasgo_mapping.get("posicion")
-        return rasgo_mapping.get(tag[position_tag],tag[position_tag])
+        feature_value = rasgo_mapping.get(tag[position_tag],tag[position_tag])
+        return feature_value
 
     def build_lexical_rule(self):
         """

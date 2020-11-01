@@ -120,7 +120,7 @@ class MakeRule(LexicalFeatures):
         if mapping:
             for k in mapping.keys():
                 setattr(self,k,self._get_mapped_tag(mapping.get(k),tag))
-            self.rule = self.build_lexical_rule()            
+            self.rule = self._build_lexical_rule()            
         else:
             raise NoMapping(f"No mapping for {self.category}")
                 
@@ -148,7 +148,7 @@ class MakeRule(LexicalFeatures):
         feature_value = rasgo_mapping.get(tag[position_tag],tag[position_tag])
         return feature_value
 
-    def build_lexical_rule(self):
+    def _build_lexical_rule(self):
         """
             Construye una regla léxica.
             Toma los features del método self._[categoría]_feats() correspondiente.

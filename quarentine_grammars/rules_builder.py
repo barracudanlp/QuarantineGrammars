@@ -92,6 +92,7 @@ class MakeRule(LexicalFeatures):
             Si no hay mapeo tag-feature para una clase de palabra,
             devuelve la excepción NoMapping.
             ...
+            
             Parámetros
             ----------
             word_dict: dict

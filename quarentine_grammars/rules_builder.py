@@ -19,6 +19,7 @@ class LexicalFeatures():
         else:
             feats = [
                 f"SUBCAT={self.subcategoria}",
+                f"LEMA={self.lemma}",
             	f"MODE={self.modo}",
             	f"TENSE={self.tiempo}",
             	f"PER={self.persona}",

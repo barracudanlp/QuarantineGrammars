@@ -10,15 +10,63 @@ class LexicalFeatures():
             feats: list
                 Lista de features
         """
+        if self.modo == "PPIO":
+            feats = self._participle_feats()
+        elif self.subcategoria == "S":
+            feats = self._auxiliar_feats()
+        elif self.subcategoria == "A":
+            feats = self._auxiliar_feats()
+        else:
+            feats = [
+                f"SUBCAT={self.subcategoria}",
+            	f"MODE={self.modo}",
+            	f"TENSE={self.tiempo}",
+            	f"PER={self.persona}",
+            	f"NUM={self.numero}",
+            	f"SEM=<\e.({self.lemma}(e) & {self.tiempo}(e))>"
+            ]
+        return feats
+
+    def _participle_feats(self):
+        """
+            Define los features de un participio
+            ...
+
+            Returns
+            ----------
+            feats: list
+                Lista de features
+        """
         feats = [
             f"SUBCAT={self.subcategoria}",
+            f"MODE={self.modo}",
+            f"PER={self.persona}",
+            f"NUM={self.numero}",
+            f"SEM=<\e.({self.lemma}(e))>"
+        ]
+        return feats
+
+    def _auxiliar_feats(self):
+        """
+            Define los features de un auxiliar
+            ...
+
+            Returns
+            ----------
+            feats: list
+                Lista de features
+        """
+        feats = [
+            f"SUBCAT={self.subcategoria}",
+            f"LEMA={self.lemma}",
             f"MODE={self.modo}",
             f"TENSE={self.tiempo}",
             f"PER={self.persona}",
             f"NUM={self.numero}",
-            f"SEM=<\e.({self.lemma}(e) & {self.tiempo}(e))>"
+            f"SEM=<\e.({self.tiempo}(e))>"
         ]
         return feats
+
 
     def _N_feats(self):
         """

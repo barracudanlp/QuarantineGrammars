@@ -13,6 +13,12 @@ S[SEM = <exists e. orden(e) & ?voc(\x. instigado(e,x)) & ?vp(e)>] -> PropN[+ANIM
 S[SEM = <exists e. orden(e) & ?voc(\x. instigado(e,x)) & ?vp(e)>] -> PropN[+ANIM, SEM=?voc] Comma Pron[PER=2] VP[+PRINC, MODE=IMP, NUM=?n, PER=2, SEM=?vp]
 S[SEM = <exists e. orden(e) & ?voc(\x. instigado(e,x)) & ?vp(e)>] -> Pron[PER=2] VP[+PRINC, MODE=IMP, NUM=?n, PER=2, SEM=?vp]
 
+# Reescritura de raíz de prueba
+# Si quieren probar alguna categoría cualquiera a ver cómo la interpreta para manipularla
+# usen esta regla y pongan la categoría que quieren, descoméntenla, y pueden parsear una
+# oración con solo esa palabra
+#S ->  
+
 # Signos de puntuación
 
 Comma -> ','
@@ -49,6 +55,7 @@ VP[-PRINC, NUM=?n, PER=?p, TENSE=?t, SEM=?s] -> Verb[SUBCAT=M, MODE=GDIO, TENSE=
 # Por ahora pongo solo verbales sintéticos. Más adelante habría que agregar verbales analíticos (distintos tipos de perífrasis)
 
 Verb[SUBCAT=M, MODE=IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[SUBCAT=M, MODE=IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+Verb[SUBCAT=M, MODE=?mode, TENSE=?t, PER=?p, NUM=?n, SEM=<\e. (?s(e) & ?r(e))>] -> V[SUBCAT='A', LEMA='haber', TENSE=?t, MODE=?mode, PER=?p, NUM=?n, SEM=?r] V[SUBCAT=M, MODE=PPIO, SEM=?s]
 
 
 # ###################

@@ -47,6 +47,22 @@
             "S":"sg",
             "P": "pl",
             "N": "inv"
+        },
+        "sema": {
+            "posicion": 4,
+            "S": "persona",
+            "G": "lugar",
+            "V": "otros"
+        },
+        "semb": {
+            "posicion": 5,
+            "P": "persona",
+            "0": "_"
+        },
+        "grado": {
+            "posicion": 6,
+            "A":"aum",
+            "D": "dim"
         }
     },
     "A":{
@@ -80,5 +96,87 @@
             "0": "adj",
             "P": "part"
         }
+    },
+    "P": {
+        "subcategoria":{
+            "posicion":1,
+            "P": "pers",
+            "D": "dem",
+            "X": "pos",
+            "I": "indet",
+            "T": "inter",
+            "R": "relat",
+            "E": "exclam"
+        },
+        "persona":{
+            "posicion": 2,
+            "primera": "1",
+            "segunda": "2",
+            "tercera": "3"
+        },
+        "genero": {
+            "posicion": 3,
+            "M": "masc",
+            "F": "fem",
+            "C": "?gen"
+        },
+        "numero": {
+            "posicion": 4,
+            "S":"sg",
+            "P": "pl",
+            "N": "inv"
+        },
+        "caso":{
+            "posicion": 5,
+            "N":"nom",
+            "A": "acu",
+            "D": "dat",
+            "O": "obl"
+        },
+        "poseedor":{
+            "posicion": 6,
+            "S":"sg",
+            "P": "pl"
+        },
+        "politness":{
+            "posicion":7,
+            "P": "polite"
+        }
+    },
+    "D": {
+        "subcategoria":{
+            "posicion":1,
+            "P": "pos",
+            "D": "dem",
+            "I": "indef",
+            "T": "inter",
+            "E": "exclam",
+            "A": "art"
+        },
+        "persona":{
+            "posicion": 2,
+            "primera": "1",
+            "segunda": "2",
+            "tercera": "3"
+        },
+        "genero": {
+            "posicion": 3,
+            "M": "masc",
+            "F": "fem",
+            "C": "?gen",
+            "N": "neu"
+        },
+        "numero": {
+            "posicion": 4,
+            "S":"sg",
+            "P": "pl",
+            "N": "inv"
+        },
+        "poseedor":{
+            "posicion": 5,
+            "S":"sg",
+            "P": "pl"
+        }
     }
+    
 }

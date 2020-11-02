@@ -109,7 +109,7 @@ class MakeRule(LexicalFeatures):
                     [rasgo]: dict
                         "posicion": int
                             Posición del rasgo en el tag del diccionario
-                        "valor_posible_en_el_tag": str
+                        [valor_posible_en_el_tag]: str
                             Nombre del valor del rasgo en la gramática
         """
         tag = word_dict.get("tag")

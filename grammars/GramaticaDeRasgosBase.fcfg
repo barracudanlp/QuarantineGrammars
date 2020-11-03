@@ -51,10 +51,13 @@ VP[-PRINC, NUM=?n, PER=?p, TENSE=?t, SEM=?s] -> Verb[SUBCAT=M, MODE=GDIO, TENSE=
 
 
 
-# Reescritura de Verb (Frases verbales formadas por un verbo principal o una perífrasis verbal, equivale grosso modo a Verb en Chomsky 1957)
-# Por ahora pongo solo verbales sintéticos. Más adelante habría que agregar verbales analíticos (distintos tipos de perífrasis)
+# Reescritura de Verb (Frases verbales formadas por un verbo principal o una perífrasis 
+# verbal, equivale grosso modo a Verb en Chomsky 1957)
 
+# Verb para verbos sintéticos
 Verb[SUBCAT=M, MODE=IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[SUBCAT=M, MODE=IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
+
+# Verb para verbos analíticos (tiempos compuestos, perífrasis verbales, locuciones verbales)
 Verb[SUBCAT=M, MODE=?mode, TENSE=?t, PER=?p, NUM=?n, SEM=<\e. (?s(e) & ?r(e))>] -> V[SUBCAT='A', LEMA='haber', TENSE=?t, MODE=?mode, PER=?p, NUM=?n, SEM=?r] V[SUBCAT=M, MODE=PPIO, SEM=?s]
 
 
@@ -63,14 +66,11 @@ Verb[SUBCAT=M, MODE=?mode, TENSE=?t, PER=?p, NUM=?n, SEM=<\e. (?s(e) & ?r(e))>] 
 # ###################
 
 
-# Determinantes y pronombres demostrativos (falta completar la semántica)
-# Los dejo comentados para que no molesten. 
-# Habría que descomentar cuando hagamos los Ns. 
+# Determinantes y pronombres demostrativos
 
-# Para los determinantes definidos, demostrativos y demás tenemos que resolver
-# qué vamos a hacer con la semántica de las descripciones definidas.
-# Agregar operador iota quizás?
-
+# La semántica de los determinantes definidos involucran el operador iota 
+# Para que ande, hicimos cambios en la carpeta sem de NLTK
+# Si se utiliza con la versión oficial de NLTK, comentar estas reglas que involucran iota
 
 Det[NUM=sg,GEN=masc, PER=3, SEM=<\P Q. Q(iota x. (singular(x) & P(x)))>] -> 'este' | 'el' | 'ese'
 Det[NUM=pl,GEN=masc, PER=3, SEM=<\P Q. Q(iota x. (plural(x) & P(x)))>] -> 'estos' | 'los' | 'esos'

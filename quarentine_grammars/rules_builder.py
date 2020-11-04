@@ -103,6 +103,28 @@ class LexicalFeatures():
         ]
         return feats
 
+# Habría que agregar las preposiciones en el json, pero no sé muy bien cómo 
+# hacer porque estaría bueno que le quede de categoría Prep en lugar de S, ya que
+# S lo tenemos reservado para la raíz, entonces hay que revisar para que ante S
+# en la posición cero redefina el self.category como Prep. 
+#
+#    def _Prep_feats(self):
+#        """
+#            Define los features de una preposición
+#            ...
+#
+#            Returns
+#            ----------
+#            feats: list
+#                Lista de features
+#        """
+#        feats = [
+#            f"LEMA={self.lemma}",
+#            f"SEM=<\\x.({self.lemma}(x))>"
+#        ]
+#        return feats
+
+
     def _A_feats(self):
         """
             Define los features de un adjetivo o pronombre
@@ -142,6 +164,96 @@ class LexicalFeatures():
         ]
         return feats
 
+#    def _P_feats(self):
+#        """
+#            Define subtipos de pronombre.
+#        """
+#        if self.subcategoria == "pers":
+#            feats = self._personal_feats()
+#        if self.subcategoria == "dem":
+#            feats = self._demonstratives_feats()
+#        if self.subcategoria == "pos":
+#            feats = self._possesives_feats()
+#        if self.subcategoria == "indet":
+#            feats = self._indeterminate_feats()
+#        if self.subcategoria == "inter":
+#            feats = self._interrogative_feats()
+#        if self.subcategoria == "relat":
+#            feats = self._relative_feats()
+#        if self.subcategoria == "exclam":
+#            feats = self._exclamative_feats()
+#
+#    def _personal_feats(self):
+#        """
+#            Define los features de un pronombre personal.
+#            ...
+#
+#            Returns
+#            ----------
+#            feats: list
+#                Lista de features
+#        """
+#        feats = [
+#            f"NUM={self.numero}",
+#            f"GEN={self.genero}",
+#            f"PER={self.persona}",
+#            f"SEM=<\\P. (P(iota x. ({self.persona}-persona(x))))>"
+#        ]
+#        return feats
+#
+#    def _demonstratives_feats(self):
+#        """
+#            Define los features de un pronombre demostrativo.
+#            ...
+#
+#            Returns
+#            ----------
+#            feats: list
+#                Lista de features
+#        """
+#        feats = [
+#            f"NUM={self.numero}",
+#            f"GEN={self.genero}",
+#            f"SEM=<\\P Q. (Q(iota x. {self.numero}(x) & P(x)))>"
+#        ]
+#        return feats
+#
+#    def _possesives_feats(self):
+#        """
+#            Define los features de un pronombre posesivo.
+#            ...
+#
+#            Returns
+#            ----------
+#            feats: list
+#                Lista de features
+#        """
+#        feats = [
+#            f"NUM={self.numero}",
+#            f"PER={self.persona}",
+#            f"GEN={self.genero}",
+#            f"SEM=<\\x.(de-{self.persona}-persona(x))>"
+#        ]
+#        return feats
+#
+#    def _interrogative_feats(self):
+#        """
+#            Define los features de un pronombre interrogativos.
+#            ...
+#
+#            Returns
+#            ----------
+#            feats: list
+#                Lista de features
+#        """
+#        feats = [
+#            f"NUM={self.numero}",
+#            f"GEN={self.genero}",
+#            f"SEM=<\\P. (P(x))>"
+#        ]
+#        return feats
+
+
 class NoMapping(Exception):
     """
         No hay mapeo tag-feature para la clase de palabra
@@ -163,7 +275,7 @@ class MakeRule(LexicalFeatures):
             Parámetros
             ----------
             word_dict: dict
-                Información de una ascepción de la palabra en el vocabulario taggeado.
+                Información de una acepción de la palabra en el vocabulario taggeado.
                 forma: str
                     forma léxica
                 lema: str

@@ -108,21 +108,21 @@ class LexicalFeatures():
 # S lo tenemos reservado para la raíz, entonces hay que revisar para que ante S
 # en la posición cero redefina el self.category como Prep. 
 #
-#    def _Prep_feats(self):
-#        """
-#            Define los features de una preposición
-#            ...
-#
-#            Returns
-#            ----------
-#            feats: list
-#                Lista de features
-#        """
-#        feats = [
-#            f"LEMA={self.lemma}",
-#            f"SEM=<\\x.({self.lemma}(x))>"
-#        ]
-#        return feats
+    def _Prep_feats(self):
+        """
+            Define los features de una preposición
+            ...
+
+            Returns
+            ----------
+            feats: list
+                Lista de features
+        """
+        feats = [
+            f"LEMA={self.lemma}",
+            f"SEM=<\\x.({self.lemma}(x))>"
+        ]
+        return feats
 
 
     def _A_feats(self):
@@ -317,7 +317,10 @@ class MakeRule(LexicalFeatures):
         tag = word_dict.get("tag")
         self.lemma = word_dict.get("lema")
         self.shape = word_dict.get("forma")
-        self.category = tag[0]
+        if tag[0] == "S":
+            self.category = "Prep"
+        else:
+            self.category = tag[0]
         mapping = tags_mapping.get(self.category)
 
         if mapping:

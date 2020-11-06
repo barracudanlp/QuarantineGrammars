@@ -177,5 +177,10 @@
             "S":"sg",
             "P": "pl"
         }
+    },
+    "S":{
+        "subcategoria":{
+            "posicion":1
+        }
     }
 }

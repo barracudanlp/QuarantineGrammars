@@ -8,16 +8,18 @@
 
 # Reescritura de la Raíz
 S[SEM = <exists e. ?subj(\x. agente(e,x)) & ?vp(e)>] -> NP[NUM=?n, PER=?m, SEM=?subj] VP[+PRINC, MODE=IND, NUM=?n, PER=?m, SEM=?vp]
+S[SEM = <exists e. ?subj(\x. agente(e,x)) & ?vp(e)>] -> Pron[NUM=?n, CASO=?s, PER=?m, GEN=?p, SEM=?subj] VP[+PRINC, MODE=IND, NUM=?n, PER=?m, SEM=?vp]
 S[SEM = <exists e. ?subj(\x. agente(e,x)) & ?vp(e)>] -> NP[NUM=?n, PER=?m, SEM=?subj] VP[+PRINC, MODE=IND, NUM=?n, PER=?m, SEM=?vp]
 S[SEM = <exists e. orden(e) & ?voc(\x. instigado(e,x)) & ?vp(e)>] -> PropN[+ANIM, SEM=?voc] Comma VP[+PRINC, MODE=IMP, NUM=?n, PER=2, SEM=?vp]
 S[SEM = <exists e. orden(e) & ?voc(\x. instigado(e,x)) & ?vp(e)>] -> PropN[+ANIM, SEM=?voc] Comma Pron[PER=2] VP[+PRINC, MODE=IMP, NUM=?n, PER=2, SEM=?vp]
 S[SEM = <exists e. orden(e) & ?voc(\x. instigado(e,x)) & ?vp(e)>] -> Pron[PER=2] VP[+PRINC, MODE=IMP, NUM=?n, PER=2, SEM=?vp]
 
+
 # Reescritura de raíz de prueba
 # Si quieren probar alguna categoría cualquiera a ver cómo la interpreta para manipularla
 # usen esta regla y pongan la categoría que quieren, descoméntenla, y pueden parsear una
 # oración con solo esa palabra
- S -> Prep
+# S -> Prep
 
 # Signos de puntuación
 
@@ -25,7 +27,6 @@ Comma -> ','
 
 # Reescritura de NP
 NP[NUM=?n, PER=?m, SEM=?pro] -> PropN[NUM=?n, PER=?m, GEN=?p, SEM=?pro] 
-NP[NUM=?n, PER=?m, SEM=?pro] -> Pron[NUM=?n, PER=?m, GEN=?p, SEM=?pro]
 NP[NUM=?n, PER=?m, GEN=?g, SEM=<?det(?nom)>] -> D[NUM=?n,GEN=?g, PER=?m, SEM=?det] N[NUM=?n,GEN=?g, SEM=?nom]
 NP[NUM=?n, PER=?m, GEN=?g, SEM=<?det(?nom)>] -> D[NUM=?n,GEN=?g, PER=?m, SEM=?det] N[NUM=?n,GEN=?g, SEM=?nom] A[Num=?n, GEN=?g]
 
@@ -43,13 +44,14 @@ VP[+PRINC, MODE=IMP, NUM=?n, PER=2, TENSE=?t, SEM=?s] -> V[SUBCAT=M, MODE=IMP, T
 VP[+PRINC, MODE=IND, NUM=?n, PER=?p, TENSE=?t, SEM=<\e.(?v(e) & ?obj(\x. tema(e, x)))>] -> Verb[SUBCAT=M, MODE=IND, TENSE=?t, PER=?p, NUM=?n, SEM=?v] NP[SEM=?obj]
 VP[+PRINC, MODE=IMP, NUM=?n, PER=?p, TENSE=?t, SEM=<\e.(?v(e) & ?obj(\x. tema(e, x)))>] -> Verb[SUBCAT=M, MODE=IMP, TENSE=?t, PER=?p, NUM=?n, SEM=?v] NP[SEM=?obj]
 
+# VPs ditransitivos
+VP[+PRINC, MODE=IND, NUM=?n, PER=?p, TENSE=?t, SEM=<\e.(?v(e) & ?obj(\x. tema(e, x)) & ?oi(\x. meta(e, x)))>] -> Verb[SUBCAT=M, MODE=IND, TENSE=?t, PER=?p, NUM=?n, SEM=?v] NP[SEM=?obj] PP[FORM='a', SEM=?oi]
+
 
 # VPs en subordinadas 
 VP[-PRINC, NUM=?n, PER=?p, TENSE=?t, SEM=?s] -> Verb[SUBCAT=M, MODE=SUBJ, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
 VP[-PRINC, NUM=?n, PER=?p, TENSE=?t, SEM=?s] -> Verb[SUBCAT=M, MODE=INF, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
 VP[-PRINC, NUM=?n, PER=?p, TENSE=?t, SEM=?s] -> Verb[SUBCAT=M, MODE=GDIO, TENSE=?t, PER=?p, NUM=?n, SEM=?s]
-
-
 
 
 # Reescritura de Verb (Frases verbales formadas por un verbo principal o una perífrasis 
@@ -60,6 +62,12 @@ Verb[SUBCAT=M, MODE=IND, TENSE=?t, PER=?p, NUM=?n, SEM=?s] -> V[SUBCAT=M, MODE=I
 
 # Verb para verbos analíticos (tiempos compuestos, perífrasis verbales, locuciones verbales)
 Verb[SUBCAT=M, MODE=?mode, TENSE=?t, PER=?p, NUM=?n, SEM=<\e. (?s(e) & ?r(e))>] -> V[SUBCAT='A', LEMA='haber', TENSE=?t, MODE=?mode, PER=?p, NUM=?n, SEM=?r] V[SUBCAT=M, MODE=PPIO, SEM=?s]
+
+# Sintagmas preposicionales
+# Para que esto funcione hay que agregar al rules_builder las preposicionaes
+PP[FORM='a', SEM=?met] -> Prep[LEMA='a'] NP[SEM=?met]
+# Esta es para objetos indirectos
+PP[FORM=?lem, SEM=<?preps(?met)>] -> Prep[LEMA=?lem, SEM=?preps] NP[SEM=?met]
 
 
 # ###################

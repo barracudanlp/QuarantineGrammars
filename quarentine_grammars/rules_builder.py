@@ -86,23 +86,6 @@ class LexicalFeatures():
         ]
         return feats
 
-    def _pronoun_feats(self):
-        """
-            Define los features de un pronombre
-            ...
-
-            Returns
-            ----------
-            feats: list
-                Lista de features
-        """
-        feats = [
-            f"NUM={self.numero}",
-            f"GEN={self.genero}",
-            f"SEM=<\\x.(de-{self.funcion}-persona(x))>"
-        ]
-        return feats
-
 # Habría que agregar las preposiciones en el json, pero no sé muy bien cómo 
 # hacer porque estaría bueno que le quede de categoría Prep en lugar de S, ya que
 # S lo tenemos reservado para la raíz, entonces hay que revisar para que ante S
@@ -144,6 +127,23 @@ class LexicalFeatures():
                 f"FUNCTION={self.funcion}",
                 f"SEM=<\\x.({self.lemma}(x))>"
             ]
+        return feats
+
+    def _pronoun_feats(self):
+        """
+            Define los features de un pronombre
+            ...
+
+            Returns
+            ----------
+            feats: list
+                Lista de features
+        """
+        feats = [
+            f"NUM={self.numero}",
+            f"GEN={self.genero}",
+            f"SEM=<\\x.(de-{self.funcion}-persona(x))>"
+        ]
         return feats
     
     def _D_feats(self):
@@ -187,43 +187,58 @@ class LexicalFeatures():
 
 
 
-#    def _P_feats(self):
-#        """
-#            Define subtipos de pronombre.
-#        """
+    def _P_feats(self):
+        """
+            Define los features de un pronombre.
+            ...
+
+            Returns
+            ----------
+            feats: list
+                Lista de features
+
+        """
 #        if self.subcategoria == "pers":
 #            feats = self._personal_feats()
-#        if self.subcategoria == "dem":
+#        elif self.subcategoria == "dem":
 #            feats = self._demonstratives_feats()
-#        if self.subcategoria == "pos":
+#        elif self.subcategoria == "pos":
 #            feats = self._possesives_feats()
-#        if self.subcategoria == "indet":
+#        elif self.subcategoria == "indet":
 #            feats = self._indeterminate_feats()
-#        if self.subcategoria == "inter":
+#        elif self.subcategoria == "inter":
 #            feats = self._interrogative_feats()
-#        if self.subcategoria == "relat":
+#        elif self.subcategoria == "relat":
 #            feats = self._relative_feats()
-#        if self.subcategoria == "exclam":
+#        elif self.subcategoria == "exclam":
 #            feats = self._exclamative_feats()
-#
-#    def _personal_feats(self):
-#        """
-#            Define los features de un pronombre personal.
-#            ...
-#
-#            Returns
-#            ----------
-#            feats: list
-#                Lista de features
-#        """
-#        feats = [
-#            f"NUM={self.numero}",
-#            f"GEN={self.genero}",
-#            f"PER={self.persona}",
-#            f"SEM=<\\P. (P(iota x. ({self.persona}-persona(x))))>"
-#        ]
-#        return feats
-#
+#        else:
+        feats = [
+            f"NUM={self.numero}",
+            f"GEN={self.genero}",
+            f"PER={self.persona}",
+            f"SEM=<\\P. (P(iota x. ({self.persona}-persona(x))))>"
+        ]
+        return feats
+
+    def _personal_feats(self):
+        """
+            Define los features de un pronombre personal.
+            ...
+
+            Returns
+            ----------
+            feats: list
+                Lista de features
+        """
+        feats = [
+            f"NUM={self.numero}",
+            f"GEN={self.genero}",
+            f"PER={self.persona}",
+            f"SEM=<\\P. (P(iota x. ({self.persona}-persona(x))))>"
+        ]
+        return feats
+
 #    def _demonstratives_feats(self):
 #        """
 #            Define los features de un pronombre demostrativo.

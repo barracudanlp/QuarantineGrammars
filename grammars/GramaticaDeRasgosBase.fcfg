@@ -19,16 +19,17 @@ S[SEM = <exists e. orden(e) & ?voc(\x. instigado(e,x)) & ?vp(e)>] -> Pron[PER=2]
 # Si quieren probar alguna categoría cualquiera a ver cómo la interpreta para manipularla
 # usen esta regla y pongan la categoría que quieren, descoméntenla, y pueden parsear una
 # oración con solo esa palabra
-# S -> Prep
+# S -> P
 
 # Signos de puntuación
 
 Comma -> ','
 
 # Reescritura de NP
-NP[NUM=?n, PER=?m, SEM=?pro] -> PropN[NUM=?n, PER=?m, GEN=?p, SEM=?pro] 
-NP[NUM=?n, PER=?m, GEN=?g, SEM=<?det(?nom)>] -> D[NUM=?n,GEN=?g, PER=?m, SEM=?det] N[NUM=?n,GEN=?g, SEM=?nom]
-NP[NUM=?n, PER=?m, GEN=?g, SEM=<?det(?nom)>] -> D[NUM=?n,GEN=?g, PER=?m, SEM=?det] N[NUM=?n,GEN=?g, SEM=?nom] A[Num=?n, GEN=?g]
+NP[NUM=?n, PER=?m, SEM=?pro] -> PropN[NUM=?n, PER=?m, GEN=?p, SEM=?pro]
+NP[NUM=?n, PER=?m, GEN=?g, SEM=<?det(?nom)>] -> D[NUM=?n, PER=?m, GEN=?g, SEM=?det] N[NUM=?n,GEN=?g, SEM=?nom]
+NP[NUM=?n, PER=?m, GEN=?g, SEM=<?det(?nom)>] -> D[NUM=?n,GEN=?g, PER=?m, SEM=?det] NominalP[NUM=?n,GEN=?g, SEM=?nom]
+NominalP[NUM=?n, GEN=?g, SEM=<\x. (?nom(x) & ?ad(x))>] -> N[NUM=?n,GEN=?g, SEM=?nom] A[Num=?n, GEN=?g, SEM=?ad]
 
 
 # Reescritura de VP

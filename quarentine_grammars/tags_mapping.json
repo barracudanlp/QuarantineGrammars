@@ -97,7 +97,7 @@
             "P": "part"
         }
     },
-    "P": {
+    "P":{
         "subcategoria":{
             "posicion":1,
             "P": "pers",
@@ -110,9 +110,9 @@
         },
         "persona":{
             "posicion": 2,
-            "primera": "1",
-            "segunda": "2",
-            "tercera": "3"
+            "1": "primera",
+            "2": "segunda",
+            "3": "tercera"
         },
         "genero": {
             "posicion": 3,
@@ -124,7 +124,7 @@
             "posicion": 4,
             "S":"sg",
             "P": "pl",
-            "N": "inv"
+            "N": "?num"
         },
         "caso":{
             "posicion": 5,
@@ -137,13 +137,9 @@
             "posicion": 6,
             "S":"sg",
             "P": "pl"
-        },
-        "politness":{
-            "posicion":7,
-            "P": "polite"
         }
     },
-    "D": {
+    "D":{
         "subcategoria":{
             "posicion":1,
             "P": "pos",

@@ -17,7 +17,7 @@ S[SEM = <exists e. orden(e) & ?voc(\x. instigado(e,x)) & ?vp(e)>] -> Pron[PER=2]
 # Si quieren probar alguna categoría cualquiera a ver cómo la interpreta para manipularla
 # usen esta regla y pongan la categoría que quieren, descoméntenla, y pueden parsear una
 # oración con solo esa palabra
-# S ->
+ S -> D
 
 # Signos de puntuación
 
@@ -26,8 +26,8 @@ Comma -> ','
 # Reescritura de NP
 NP[NUM=?n, PER=?m, SEM=?pro] -> PropN[NUM=?n, PER=?m, GEN=?p, SEM=?pro] 
 NP[NUM=?n, PER=?m, SEM=?pro] -> Pron[NUM=?n, PER=?m, GEN=?p, SEM=?pro]
-NP[NUM=?n, PER=?m, GEN=?g, SEM=<?det(?nom)>] -> Det[NUM=?n,GEN=?g, PER=?m, SEM=?det] N[NUM=?n,GEN=?g, SEM=?nom]
-NP[NUM=?n, PER=?m, GEN=?g, SEM=<?det(?nom)>] -> Det[NUM=?n,GEN=?g, PER=?m, SEM=?det] N[NUM=?n,GEN=?g, SEM=?nom] A[Num=?n, GEN=?g]
+NP[NUM=?n, PER=?m, GEN=?g, SEM=<?det(?nom)>] -> D[NUM=?n,GEN=?g, PER=?m, SEM=?det] N[NUM=?n,GEN=?g, SEM=?nom]
+NP[NUM=?n, PER=?m, GEN=?g, SEM=<?det(?nom)>] -> D[NUM=?n,GEN=?g, PER=?m, SEM=?det] N[NUM=?n,GEN=?g, SEM=?nom] A[Num=?n, GEN=?g]
 
 
 # Reescritura de VP
@@ -72,20 +72,22 @@ Verb[SUBCAT=M, MODE=?mode, TENSE=?t, PER=?p, NUM=?n, SEM=<\e. (?s(e) & ?r(e))>] 
 # La semántica de los determinantes definidos involucran el operador iota 
 # Para que ande, hicimos cambios en la carpeta sem de NLTK
 # Si se utiliza con la versión oficial de NLTK, comentar estas reglas que involucran iota
+# El nombre de los determinantes cambió a D para facilitar el rules_builder.
 
-Det[NUM=sg,GEN=masc, PER=3, SEM=<\P Q. Q(iota x. (singular(x) & P(x)))>] -> 'este' | 'el' | 'ese'
-Det[NUM=pl,GEN=masc, PER=3, SEM=<\P Q. Q(iota x. (plural(x) & P(x)))>] -> 'estos' | 'los' | 'esos'
-Det[NUM=sg,GEN=fem, PER=3, SEM=<\P Q. Q(iota x. (singular(x) & P(x)))>] -> 'esta' | 'la' | 'esa'
-Det[NUM=pl,GEN=fem, PER=3, SEM=<\P Q. Q(iota x. (plural(x) & P(x)))>] -> 'estas' | 'las' | 'esas'
 
-Det[NUM=sg,GEN=masc,SEM=<\P Q.exists x.(singular(x) & P(x) & Q(x))>] -> 'algún'
-Det[NUM=pl,GEN=masc,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'algunos'
-Det[NUM=sg,GEN=fem,SEM=<\P Q.exists x.(singular (x) & P(x) & Q(x))>] -> 'alguna'
-Det[NUM=pl,GEN=fem,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'algunas'
-Det[NUM=sg,GEN=masc,SEM=<\P Q.exists x.(singular(x) & P(x) & Q(x))>] -> 'un'
-Det[NUM=sg,GEN=fem,SEM=<\P Q.exists x.(singular(x) & P(x) & Q(x))>] -> 'una'
-Det[NUM=pl,GEN=masc,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'unos'
-Det[NUM=pl,GEN=fem,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'unas'
+#D[NUM=sg,GEN=masc, PER=3, SEM=<\P Q. Q(iota x. (singular(x) & P(x)))>] -> 'este' | 'el' | 'ese'
+#D[NUM=pl,GEN=masc, PER=3, SEM=<\P Q. Q(iota x. (plural(x) & P(x)))>] -> 'estos' | 'los' | 'esos'
+#D[NUM=sg,GEN=fem, PER=3, SEM=<\P Q. Q(iota x. (singular(x) & P(x)))>] -> 'esta' | 'la' | 'esa'
+#D[NUM=pl,GEN=fem, PER=3, SEM=<\P Q. Q(iota x. (plural(x) & P(x)))>] -> 'estas' | 'las' | 'esas'
+
+D[NUM=sg,GEN=masc,SEM=<\P Q.exists x.(singular(x) & P(x) & Q(x))>] -> 'algún'
+D[NUM=pl,GEN=masc,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'algunos'
+D[NUM=sg,GEN=fem,SEM=<\P Q.exists x.(singular (x) & P(x) & Q(x))>] -> 'alguna'
+D[NUM=pl,GEN=fem,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'algunas'
+D[NUM=sg,GEN=masc,SEM=<\P Q.exists x.(singular(x) & P(x) & Q(x))>] -> 'un'
+D[NUM=sg,GEN=fem,SEM=<\P Q.exists x.(singular(x) & P(x) & Q(x))>] -> 'una'
+D[NUM=pl,GEN=masc,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'unos'
+D[NUM=pl,GEN=fem,SEM=<\P Q.exists x.(plural(x) & P(x) & Q(x))>] -> 'unas'
 
 
 # Nombres propios (una lista preliminar, habría que ver si los nombres propios se pueden incorporar de un modo más automatizado)

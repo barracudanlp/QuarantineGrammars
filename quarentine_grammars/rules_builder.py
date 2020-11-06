@@ -156,13 +156,36 @@ class LexicalFeatures():
             feats: list
                 Lista de features
         """
+        if self.subcategoria == 'art':
+            feats = self._article_feats()
+        else: 
+            feats = [
+                f"NUM={self.numero}",
+                f"GEN={self.genero}",
+                f"PER={self.persona}",
+                f"SUB={self.subcategoria}",            
+                f"SEM=<\\x.({self.lemma}(x))>"
+            ]
+        return feats
+
+    def _article_feats(self):
+        """
+            Define los features de un artículo.
+            ...
+
+            Returns
+            ----------
+            feats: list
+                Lista de features
+        """
         feats = [
             f"NUM={self.numero}",
             f"GEN={self.genero}",
-            f"PER={self.persona}",
-            f"SEM=<\\x.({self.lemma}(x))>"
+            f"SEM=<\\P Q. (Q(iota x. ({self.numero}(x) & P(x))))>"
         ]
         return feats
+
+
 
 #    def _P_feats(self):
 #        """

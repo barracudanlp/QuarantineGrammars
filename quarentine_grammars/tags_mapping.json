@@ -174,9 +174,11 @@
             "P": "pl"
         }
     },
-    "Prep":{
+    "X":{
         "subcategoria":{
-            "posicion":1
+            "posicion":1,
+            "P": "prep",
+            "C": "contrac"
         }
     }
 }

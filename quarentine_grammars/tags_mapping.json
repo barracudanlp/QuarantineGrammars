@@ -177,8 +177,13 @@
     "X":{
         "subcategoria":{
             "posicion":1,
-            "P": "prep",
-            "C": "contrac"
+            "P": "prep"
+        },
+        "forma":{
+            "posicion": 2,
+            "S": "simpl",
+            "C": "contr"
         }
+        
     }
 }

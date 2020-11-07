@@ -68,7 +68,6 @@ class LexicalFeatures():
         ]
         return feats
 
-
     def _N_feats(self):
         """
             Define los features de un sustantivo
@@ -86,10 +85,6 @@ class LexicalFeatures():
         ]
         return feats
 
-    # Habría que agregar las preposiciones en el json, pero no sé muy bien cómo 
-    # hacer porque estaría bueno que le quede de categoría Prep en lugar de S, ya que
-    # S lo tenemos reservado para la raíz, entonces hay que revisar para que ante S
-    # en la posición cero redefina el self.category como Prep.
     def _Prep_feats(self):
         """
             Define los features de una preposición
@@ -105,7 +100,6 @@ class LexicalFeatures():
             f"SEM=<\\x.({self.lemma}(x))>"
         ]
         return feats
-
 
     def _A_feats(self):
         """
@@ -183,8 +177,6 @@ class LexicalFeatures():
             f"SEM=<\\P Q. (Q(iota x. ({self.numero}(x) & P(x))))>"
         ]
         return feats
-
-
 
     def _P_feats(self):
         """

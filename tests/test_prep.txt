@@ -1,0 +1,44 @@
+(QuarantineGrammars) chafa@chafa-pc:~/Escritorio/GIT/chafa/QuarantineGrammars (feat/preposiciones) $ python sentence_interpreter.py 
+Oración (type 'q' to quit): Juan fuma
+
+	(exists e.agente(e,juan) & fumar(e) & presente(e))
+
+Oración (type 'q' to quit): Juan come fideo
+Oración (type 'q' to quit): Juan da clases
+Oración (type 'q' to quit): el chico corre
+
+	(exists e.agente(e,iota x.(sg(x) & chico(x))) & correr(e) & presente(e))
+
+Oración (type 'q' to quit): el chico corre la pelota
+
+	(exists e.agente(e,iota x.(sg(x) & chico(x))) & correr(e) & presente(e) & tema(e,iota x.(sg(x) & pelota(x))))
+
+Oración (type 'q' to quit): el chico da besos
+Oración (type 'q' to quit): el chico canta canciones
+Oración (type 'q' to quit): el chico canta la cancion
+
+	Grammar does not cover some of the input words: "'cancion'".
+
+Oración (type 'q' to quit): el chico canta la marcha
+
+	(exists e.agente(e,iota x.(sg(x) & chico(x))) & cantar(e) & presente(e) & tema(e,iota x.(sg(x) & marcha(x))))
+
+Oración (type 'q' to quit): el chico canta a la gente
+Oración (type 'q' to quit): el chico da beso a Juan
+Oración (type 'q' to quit): el chico da un beso a Juan
+
+	(exists e.agente(e,iota x.(sg(x) & chico(x))) & dar(e) & presente(e) & uno(\x.beso(x),\x.tema(e,x)) & meta(e,juan))
+
+
+	(exists e.agente(e,iota x.(sg(x) & chico(x))) & dar(e) & presente(e) & exists x.(singular(x) & beso(x) & tema(e,x)) & meta(e,juan))
+	
+	Oración (type 'q' to quit): el chico dio un beso a Juan
+
+	(exists e.agente(e,iota x.(sg(x) & chico(x))) & dar(e) & pasado(e) & uno(\x.beso(x),\x.tema(e,x)) & meta(e,juan))
+
+
+	(exists e.agente(e,iota x.(sg(x) & chico(x))) & dar(e) & pasado(e) & exists x.(singular(x) & beso(x) & tema(e,x)) & meta(e,juan))
+
+Oración (type 'q' to quit): el chico le dio un beso a Juan
+Oración (type 'q' to quit): 
+

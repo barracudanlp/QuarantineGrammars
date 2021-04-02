@@ -174,9 +174,16 @@
             "P": "pl"
         }
     },
-    "Prep":{
+    "X":{
         "subcategoria":{
-            "posicion":1
+            "posicion":1,
+            "P": "prep"
+        },
+        "forma":{
+            "posicion": 2,
+            "S": "simpl",
+            "C": "contr"
         }
+        
     }
 }

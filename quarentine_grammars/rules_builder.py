@@ -85,7 +85,7 @@ class LexicalFeatures():
         ]
         return feats
 
-    def _Prep_feats(self):
+    def _X_feats(self):
         """
             Define los features de una preposición
             ...
@@ -95,10 +95,12 @@ class LexicalFeatures():
             feats: list
                 Lista de features
         """
-        feats = [
-            f"LEMA={self.lemma}",
-            f"SEM=<\\x.({self.lemma}(x))>"
-        ]
+        if self.subcategoria == "prep":
+            feats = [
+                f"LEMA={self.lemma}",
+                f"SEM=<\\x.({self.lemma}(x))>"
+                ]
+            
         return feats
 
     def _A_feats(self):
@@ -319,10 +321,7 @@ class MakeRule(LexicalFeatures):
         lema = word_dict.get("lema")
         self.lemma = lema if len(lema) > 1 else f"_{lema}"
         self.shape = word_dict.get("forma")
-        if tag[0] == "S":
-            self.category = "Prep"
-        else:
-            self.category = tag[0]
+        self.category = tag[0]
         mapping = tags_mapping.get(self.category)
         if mapping:
             for k in mapping.keys():
